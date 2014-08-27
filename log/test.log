@@ -6825,3 +6825,226 @@ Completed 200 OK in 106ms (Views: 103.0ms | ActiveRecord: 0.6ms)
   [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE DATABASE `baukis_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[36m (37.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (37.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateStaffMembers (20140723082116)
+  [1m[35m (15.0ms)[0m  CREATE TABLE `staff_members` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `email_for_index` varchar(255) NOT NULL, `family_name` varchar(255) NOT NULL, `given_name` varchar(255) NOT NULL, `family_name_kana` varchar(255) NOT NULL, `given_name_kana` varchar(255) NOT NULL, `hashed_password` varchar(255), `start_date` date NOT NULL, `end_date` date, `suspended` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (24.4ms)[0m  [1mCREATE UNIQUE INDEX `index_staff_members_on_email_for_index`  ON `staff_members` (`email_for_index`) [0m
+  [1m[35m (21.0ms)[0m  CREATE  INDEX `index_staff_members_on_family_name_kana_and_given_name_kana`  ON `staff_members` (`family_name_kana`, `given_name_kana`) 
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140723082116')
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAdminMembers (20140723111825)
+  [1m[35m (15.2ms)[0m  CREATE TABLE `admin_members` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `email_for_index` varchar(255) NOT NULL, `hashed_password` varchar(255), `suspended` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (21.6ms)[0m  [1mCREATE UNIQUE INDEX `index_admin_members_on_email_for_index`  ON `admin_members` (`email_for_index`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140723111825')[0m
+  [1m[35m (5.1ms)[0m  COMMIT
+Migrating to CreateStaffEvents (20140803013844)
+  [1m[36m (13.4ms)[0m  [1mCREATE TABLE `staff_events` (`id` int(11) auto_increment PRIMARY KEY, `staff_member_id` int(11) NOT NULL, `type` varchar(255) NOT NULL, `created_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (20.3ms)[0m  CREATE  INDEX `index_staff_events_on_created_at`  ON `staff_events` (`created_at`) 
+  [1m[36m (20.4ms)[0m  [1mCREATE  INDEX `index_staff_events_on_staff_member_id_and_created_at`  ON `staff_events` (`staff_member_id`, `created_at`) [0m
+  [1m[35m (60.6ms)[0m  ALTER TABLE `staff_events` ADD CONSTRAINT `staff_events_staff_member_id_fk` FOREIGN KEY (`staff_member_id`) REFERENCES `staff_members`(id)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140803013844')
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCustomers (20140809065211)
+  [1m[35m (21.7ms)[0m  CREATE TABLE `customers` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `email_for_index` varchar(255) NOT NULL, `family_name` varchar(255) NOT NULL, `given_name` varchar(255) NOT NULL, `family_name_kana` varchar(255) NOT NULL, `given_name_kana` varchar(255) NOT NULL, `gender` varchar(255), `birthday` date, `hashed_password` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (20.6ms)[0m  [1mCREATE UNIQUE INDEX `index_customers_on_email_for_index`  ON `customers` (`email_for_index`) [0m
+  [1m[35m (21.9ms)[0m  CREATE  INDEX `index_customers_on_family_name_kana_and_given_name_kana`  ON `customers` (`family_name_kana`, `given_name_kana`) 
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140809065211')
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAddresses (20140809065229)
+  [1m[35m (13.5ms)[0m  CREATE TABLE `addresses` (`id` int(11) auto_increment PRIMARY KEY, `customer_id` int(11) NOT NULL, `type` varchar(255) NOT NULL, `postal_code` varchar(255) NOT NULL, `prefecture` varchar(255) NOT NULL, `city` varchar(255) NOT NULL, `address1` varchar(255) NOT NULL, `address2` varchar(255) NOT NULL, `company_name` varchar(255) DEFAULT '' NOT NULL, `division_name` varchar(255) DEFAULT '' NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (21.4ms)[0m  [1mCREATE  INDEX `index_addresses_on_customer_id`  ON `addresses` (`customer_id`) [0m
+  [1m[35m (23.8ms)[0m  CREATE UNIQUE INDEX `index_addresses_on_type_and_customer_id`  ON `addresses` (`type`, `customer_id`) 
+  [1m[36m (53.1ms)[0m  [1mALTER TABLE `addresses` ADD CONSTRAINT `addresses_customer_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customers`(id)[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140809065229')[0m
+  [1m[35m (0.9ms)[0m  COMMIT
+Migrating to CreatePhones (20140811122237)
+  [1m[36m (25.3ms)[0m  [1mCREATE TABLE `phones` (`id` int(11) auto_increment PRIMARY KEY, `customer_id` int(11) NOT NULL, `address_id` int(11), `number` varchar(255) NOT NULL, `number_for_index` varchar(255) NOT NULL, `primary` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (19.6ms)[0m  CREATE  INDEX `index_phones_on_customer_id`  ON `phones` (`customer_id`) 
+  [1m[36m (20.0ms)[0m  [1mCREATE  INDEX `index_phones_on_address_id`  ON `phones` (`address_id`) [0m
+  [1m[35m (21.3ms)[0m  CREATE  INDEX `index_phones_on_number_for_index`  ON `phones` (`number_for_index`) 
+  [1m[36m (63.9ms)[0m  [1mALTER TABLE `phones` ADD CONSTRAINT `phones_customer_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customers`(id)[0m
+  [1m[35m (86.9ms)[0m  ALTER TABLE `phones` ADD CONSTRAINT `phones_address_id_fk` FOREIGN KEY (`address_id`) REFERENCES `addresses`(id)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140811122237')
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+Migrating to AlterCustomers1 (20140812034537)
+  [1m[35m (71.5ms)[0m  ALTER TABLE `customers` ADD `birth_year` int(11)
+  [1m[36m (55.0ms)[0m  [1mALTER TABLE `customers` ADD `birth_month` int(11)[0m
+  [1m[35m (55.8ms)[0m  ALTER TABLE `customers` ADD `birth_mday` int(11)
+  [1m[36m (22.8ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_year_and_birth_month_and_birth_mday`  ON `customers` (`birth_year`, `birth_month`, `birth_mday`) [0m
+  [1m[35m (29.9ms)[0m  CREATE  INDEX `index_customers_on_birth_month_and_birth_mday`  ON `customers` (`birth_month`, `birth_mday`) 
+  [1m[36m (21.4ms)[0m  [1mCREATE  INDEX `index_customers_on_given_name_kana`  ON `customers` (`given_name_kana`) [0m
+  [1m[35m (22.9ms)[0m  CREATE  INDEX `index_customers_on_birth_year_and_furigana`  ON `customers` (`birth_year`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (23.7ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_year_and_given_name_kana`  ON `customers` (`birth_year`, `given_name_kana`) [0m
+  [1m[35m (24.7ms)[0m  CREATE  INDEX `index_customers_on_birth_month_and_furigana`  ON `customers` (`birth_month`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (21.0ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_month_and_given_name_kana`  ON `customers` (`birth_month`, `given_name_kana`) [0m
+  [1m[35m (24.1ms)[0m  CREATE  INDEX `index_customers_on_birth_mday_and_furigana`  ON `customers` (`birth_mday`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (22.8ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_mday_and_given_name_kana`  ON `customers` (`birth_mday`, `given_name_kana`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140812034537')[0m
+  [1m[35m (3.4ms)[0m  COMMIT
+Migrating to AlterAddresses1 (20140812034548)
+  [1m[36m (25.5ms)[0m  [1mCREATE  INDEX `index_addresses_on_type_and_prefecture_and_city`  ON `addresses` (`type`, `prefecture`, `city`) [0m
+  [1m[35m (21.7ms)[0m  CREATE  INDEX `index_addresses_on_type_and_city`  ON `addresses` (`type`, `city`) 
+  [1m[36m (22.7ms)[0m  [1mCREATE  INDEX `index_addresses_on_prefecture_and_city`  ON `addresses` (`prefecture`, `city`) [0m
+  [1m[35m (21.5ms)[0m  CREATE  INDEX `index_addresses_on_city`  ON `addresses` (`city`) 
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140812034548')
+  [1m[36m (3.7ms)[0m  [1mCOMMIT[0m
+Migrating to UpdateCustomers1 (20140812041117)
+  [1m[35m (1.1ms)[0m  
+      UPDATE customers SET birth_year = EXTRACT(YEAR FROM birthday),
+        birth_month = EXTRACT(MONTH FROM birthday),
+        birth_mday = EXTRACT(DAY FROM birthday)
+        WHERE birthday IS NOT NULL
+      
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140812041117')
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+Migrating to AlterCustomers2 (20140812080925)
+  [1m[35m (22.7ms)[0m  CREATE  INDEX `index_customers_on_gender_and_furigana`  ON `customers` (`gender`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140812080925')
+  [1m[36m (4.0ms)[0m  [1mCOMMIT[0m
+Migrating to AlterAddress2 (20140812082005)
+  [1m[35m (20.4ms)[0m  CREATE  INDEX `index_addresses_on_postal_code`  ON `addresses` (`postal_code`) 
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140812082005')
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+Migrating to AlterPhone2 (20140812093211)
+  [1m[35m (46.6ms)[0m  ALTER TABLE `phones` ADD `last_four_digits` varchar(255)
+  [1m[36m (18.4ms)[0m  [1mCREATE  INDEX `index_phones_on_last_four_digits`  ON `phones` (`last_four_digits`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140812093211')[0m
+  [1m[35m (3.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  
+          SELECT fk.referenced_table_name as 'to_table'
+                ,fk.referenced_column_name as 'primary_key'
+                ,fk.column_name as 'column'
+                ,fk.constraint_name as 'name'
+          FROM information_schema.key_column_usage fk
+          WHERE fk.referenced_column_name is not null
+            AND fk.table_schema = 'baukis_test'
+            AND fk.table_name = 'addresses'
+        
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `addresses`[0m
+  [1m[35m (0.3ms)[0m  
+          SELECT fk.referenced_table_name as 'to_table'
+                ,fk.referenced_column_name as 'primary_key'
+                ,fk.column_name as 'column'
+                ,fk.constraint_name as 'name'
+          FROM information_schema.key_column_usage fk
+          WHERE fk.referenced_column_name is not null
+            AND fk.table_schema = 'baukis_test'
+            AND fk.table_name = 'admin_members'
+        
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `admin_members`[0m
+  [1m[35m (0.2ms)[0m  
+          SELECT fk.referenced_table_name as 'to_table'
+                ,fk.referenced_column_name as 'primary_key'
+                ,fk.column_name as 'column'
+                ,fk.constraint_name as 'name'
+          FROM information_schema.key_column_usage fk
+          WHERE fk.referenced_column_name is not null
+            AND fk.table_schema = 'baukis_test'
+            AND fk.table_name = 'customers'
+        
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `customers`[0m
+  [1m[35m (0.3ms)[0m  
+          SELECT fk.referenced_table_name as 'to_table'
+                ,fk.referenced_column_name as 'primary_key'
+                ,fk.column_name as 'column'
+                ,fk.constraint_name as 'name'
+          FROM information_schema.key_column_usage fk
+          WHERE fk.referenced_column_name is not null
+            AND fk.table_schema = 'baukis_test'
+            AND fk.table_name = 'phones'
+        
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `phones`[0m
+  [1m[35m (0.2ms)[0m  
+          SELECT fk.referenced_table_name as 'to_table'
+                ,fk.referenced_column_name as 'primary_key'
+                ,fk.column_name as 'column'
+                ,fk.constraint_name as 'name'
+          FROM information_schema.key_column_usage fk
+          WHERE fk.referenced_column_name is not null
+            AND fk.table_schema = 'baukis_test'
+            AND fk.table_name = 'staff_events'
+        
+  [1m[36m (0.0ms)[0m  [1mSHOW CREATE TABLE `staff_events`[0m
+  [1m[35m (0.2ms)[0m  
+          SELECT fk.referenced_table_name as 'to_table'
+                ,fk.referenced_column_name as 'primary_key'
+                ,fk.column_name as 'column'
+                ,fk.constraint_name as 'name'
+          FROM information_schema.key_column_usage fk
+          WHERE fk.referenced_column_name is not null
+            AND fk.table_schema = 'baukis_test'
+            AND fk.table_name = 'staff_members'
+        
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `staff_members`[0m
+  [1m[36m (147.4ms)[0m  [1mDROP DATABASE IF EXISTS `baukis_test`[0m
+  [1m[35m (0.2ms)[0m  CREATE DATABASE `baukis_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (25.7ms)[0m  [1mCREATE TABLE `addresses` (`id` int(11) auto_increment PRIMARY KEY, `customer_id` int(11) NOT NULL, `type` varchar(255) NOT NULL, `postal_code` varchar(255) NOT NULL, `prefecture` varchar(255) NOT NULL, `city` varchar(255) NOT NULL, `address1` varchar(255) NOT NULL, `address2` varchar(255) NOT NULL, `company_name` varchar(255) DEFAULT '' NOT NULL, `division_name` varchar(255) DEFAULT '' NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (20.4ms)[0m  CREATE  INDEX `index_addresses_on_city` USING btree ON `addresses` (`city`) 
+  [1m[36m (21.4ms)[0m  [1mCREATE  INDEX `index_addresses_on_customer_id` USING btree ON `addresses` (`customer_id`) [0m
+  [1m[35m (20.4ms)[0m  CREATE  INDEX `index_addresses_on_postal_code` USING btree ON `addresses` (`postal_code`) 
+  [1m[36m (26.8ms)[0m  [1mCREATE  INDEX `index_addresses_on_prefecture_and_city` USING btree ON `addresses` (`prefecture`, `city`) [0m
+  [1m[35m (26.0ms)[0m  CREATE  INDEX `index_addresses_on_type_and_city` USING btree ON `addresses` (`type`, `city`) 
+  [1m[36m (21.3ms)[0m  [1mCREATE UNIQUE INDEX `index_addresses_on_type_and_customer_id` USING btree ON `addresses` (`type`, `customer_id`) [0m
+  [1m[35m (21.3ms)[0m  CREATE  INDEX `index_addresses_on_type_and_prefecture_and_city` USING btree ON `addresses` (`type`, `prefecture`, `city`) 
+  [1m[36m (14.1ms)[0m  [1mCREATE TABLE `admin_members` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `email_for_index` varchar(255) NOT NULL, `hashed_password` varchar(255), `suspended` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (21.1ms)[0m  CREATE UNIQUE INDEX `index_admin_members_on_email_for_index` USING btree ON `admin_members` (`email_for_index`) 
+  [1m[36m (17.0ms)[0m  [1mCREATE TABLE `customers` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `email_for_index` varchar(255) NOT NULL, `family_name` varchar(255) NOT NULL, `given_name` varchar(255) NOT NULL, `family_name_kana` varchar(255) NOT NULL, `given_name_kana` varchar(255) NOT NULL, `gender` varchar(255), `birthday` date, `hashed_password` varchar(255), `created_at` datetime, `updated_at` datetime, `birth_year` int(11), `birth_month` int(11), `birth_mday` int(11)) ENGINE=InnoDB[0m
+  [1m[35m (33.0ms)[0m  CREATE  INDEX `index_customers_on_birth_mday_and_furigana` USING btree ON `customers` (`birth_mday`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (20.9ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_mday_and_given_name_kana` USING btree ON `customers` (`birth_mday`, `given_name_kana`) [0m
+  [1m[35m (21.3ms)[0m  CREATE  INDEX `index_customers_on_birth_month_and_birth_mday` USING btree ON `customers` (`birth_month`, `birth_mday`) 
+  [1m[36m (27.9ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_month_and_furigana` USING btree ON `customers` (`birth_month`, `family_name_kana`, `given_name_kana`) [0m
+  [1m[35m (21.6ms)[0m  CREATE  INDEX `index_customers_on_birth_month_and_given_name_kana` USING btree ON `customers` (`birth_month`, `given_name_kana`) 
+  [1m[36m (22.3ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_year_and_birth_month_and_birth_mday` USING btree ON `customers` (`birth_year`, `birth_month`, `birth_mday`) [0m
+  [1m[35m (20.8ms)[0m  CREATE  INDEX `index_customers_on_birth_year_and_furigana` USING btree ON `customers` (`birth_year`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (21.8ms)[0m  [1mCREATE  INDEX `index_customers_on_birth_year_and_given_name_kana` USING btree ON `customers` (`birth_year`, `given_name_kana`) [0m
+  [1m[35m (20.1ms)[0m  CREATE UNIQUE INDEX `index_customers_on_email_for_index` USING btree ON `customers` (`email_for_index`) 
+  [1m[36m (21.7ms)[0m  [1mCREATE  INDEX `index_customers_on_family_name_kana_and_given_name_kana` USING btree ON `customers` (`family_name_kana`, `given_name_kana`) [0m
+  [1m[35m (22.5ms)[0m  CREATE  INDEX `index_customers_on_gender_and_furigana` USING btree ON `customers` (`gender`, `family_name_kana`, `given_name_kana`) 
+  [1m[36m (24.8ms)[0m  [1mCREATE  INDEX `index_customers_on_given_name_kana` USING btree ON `customers` (`given_name_kana`) [0m
+  [1m[35m (24.6ms)[0m  CREATE TABLE `phones` (`id` int(11) auto_increment PRIMARY KEY, `customer_id` int(11) NOT NULL, `address_id` int(11), `number` varchar(255) NOT NULL, `number_for_index` varchar(255) NOT NULL, `primary` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime, `last_four_digits` varchar(255)) ENGINE=InnoDB
+  [1m[36m (19.9ms)[0m  [1mCREATE  INDEX `index_phones_on_address_id` USING btree ON `phones` (`address_id`) [0m
+  [1m[35m (22.5ms)[0m  CREATE  INDEX `index_phones_on_customer_id` USING btree ON `phones` (`customer_id`) 
+  [1m[36m (20.4ms)[0m  [1mCREATE  INDEX `index_phones_on_last_four_digits` USING btree ON `phones` (`last_four_digits`) [0m
+  [1m[35m (21.5ms)[0m  CREATE  INDEX `index_phones_on_number_for_index` USING btree ON `phones` (`number_for_index`) 
+  [1m[36m (15.0ms)[0m  [1mCREATE TABLE `staff_events` (`id` int(11) auto_increment PRIMARY KEY, `staff_member_id` int(11) NOT NULL, `type` varchar(255) NOT NULL, `created_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (21.1ms)[0m  CREATE  INDEX `index_staff_events_on_created_at` USING btree ON `staff_events` (`created_at`) 
+  [1m[36m (24.2ms)[0m  [1mCREATE  INDEX `index_staff_events_on_staff_member_id_and_created_at` USING btree ON `staff_events` (`staff_member_id`, `created_at`) [0m
+  [1m[35m (13.2ms)[0m  CREATE TABLE `staff_members` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `email_for_index` varchar(255) NOT NULL, `family_name` varchar(255) NOT NULL, `given_name` varchar(255) NOT NULL, `family_name_kana` varchar(255) NOT NULL, `given_name_kana` varchar(255) NOT NULL, `hashed_password` varchar(255), `start_date` date NOT NULL, `end_date` date, `suspended` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (20.1ms)[0m  [1mCREATE UNIQUE INDEX `index_staff_members_on_email_for_index` USING btree ON `staff_members` (`email_for_index`) [0m
+  [1m[35m (29.2ms)[0m  CREATE  INDEX `index_staff_members_on_family_name_kana_and_given_name_kana` USING btree ON `staff_members` (`family_name_kana`, `given_name_kana`) 
+  [1m[36m (98.8ms)[0m  [1mALTER TABLE `addresses` ADD CONSTRAINT `addresses_customer_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customers`(id)[0m
+  [1m[35m (104.7ms)[0m  ALTER TABLE `phones` ADD CONSTRAINT `phones_address_id_fk` FOREIGN KEY (`address_id`) REFERENCES `addresses`(id)
+  [1m[36m (101.2ms)[0m  [1mALTER TABLE `phones` ADD CONSTRAINT `phones_customer_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `customers`(id)[0m
+  [1m[35m (96.5ms)[0m  ALTER TABLE `staff_events` ADD CONSTRAINT `staff_events_staff_member_id_fk` FOREIGN KEY (`staff_member_id`) REFERENCES `staff_members`(id)
+  [1m[36m (25.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (38.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (3.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140812093211')
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140723082116')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140723111825')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140803013844')[0m
+  [1m[35m (2.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140809065211')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140809065229')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140811122237')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140812034537')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140812034548')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140812041117')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140812080925')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140812082005')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
