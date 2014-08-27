@@ -1,7 +1,7 @@
 rails-experiment
 ================
 
-OIAX App
+**OIAX App**
 
 ##デモサイトURL @ heroku
 
@@ -23,7 +23,7 @@ Vagrant上で実行する場合は、下記通りとなります。
 
     vagrant up
     vagrant ssh
-  
+
   を実行
   
 2.Bundle
@@ -47,14 +47,14 @@ Vagrant上で実行する場合は、下記通りとなります。
 
 ##補足情報
 
-※ developmentとtestはmysqlで、productionはheroku無料の縛りから、postgresqlを使用しています。
-
-※ herokuへアップ時は、developとどう環境にて、下記コマンドでprecompileが必要です。
+ developmentとtestはmysqlで、productionはheroku無料の縛りから、postgresqlを使用しています。
+ 
+ ちな、herokuへアップ時は、developと同環境にて、下記コマンドでprecompileが必要でした。
 
     bin/rake assets:precompile RAILS_ENV=production
 
-※ テストデータは、下記フォルダを参照のこと。
+ ログインに使用するテストデータは、下記フォルダを参照のこと。
 
     db/seeds/
 
-※ .ruby-versionの中身は、rvmを考慮し「ruby-2.1.2」を使用してます（2.1.2ではなく。)
+ .ruby-versionの中身は、rvmを考慮し「ruby-2.1.2」を使用してます（「2.1.2」ではなく。)
