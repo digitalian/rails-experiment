@@ -3,22 +3,22 @@ rails-experiment
 
 OIAX default App
 
-・デモサイト短縮URL @ codeanywhere
+・デモサイト短縮URL @ heroku
 
   職員
-  > http://urx.nu/bffs
+  > http://rails-experiment.herokuapp.com/
   
   管理者
-  > http://urx.nu/bfga
+  > http://rails-experiment.herokuapp.com/admin
   
   顧客
-  > http://urx.nu/bfgp
-  
-　※常時起動している訳ではないです。
+  > http://rails-experiment.herokuapp.com/mypage
+
 
 
 
 起動準備
+Vagrant上で実行する場合は、下記通りとなります。
 
 1.Vagrant
 
@@ -29,7 +29,7 @@ OIAX default App
   
 2.Bundle
 
-    cd /vagrant/mysql/
+    cd /vagrant/
     bin/bundle
   
 3.DBセットアップ
@@ -43,3 +43,6 @@ OIAX default App
     config/route.rb
   
   を任意のドメインに修正（ex. localhostなど）
+
+
+なお、development、testはmysqlでproductionはheroku無料の縛りからpostgresqlを使用しています。
