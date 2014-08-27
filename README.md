@@ -1,9 +1,9 @@
 rails-experiment
 ================
 
-OIAX default App
+OIAX App
 
-・デモサイト短縮URL @ heroku
+・デモサイトURL @ heroku
 
   職員
   > http://rails-experiment.herokuapp.com/staff
@@ -54,3 +54,5 @@ Vagrant上で実行する場合は、下記通りとなります。
 ※ テストデータは、下記フォルダを参照のこと。
 
     db/seeds/
+
+※ .ruby-versionの中身は、rvmを考慮し「ruby-2.1.2」を使用してます（2.1.2ではなく。)
