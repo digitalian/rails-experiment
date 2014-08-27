@@ -7048,3 +7048,1274 @@ Migrating to AlterPhone2 (20140812093211)
   [1m[35m (0.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140812080925')
   [1m[36m (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140812082005')[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Admin::StaffMembersController#index as HTML
+Redirected to http://baukis.example.com/admin/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Admin::StaffMembersController#show as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://baukis.example.com/admin/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAdminMember Exists (0.6ms)[0m  SELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin1@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:34', 'admin1@example.com', 'admin1@example.com', '$2a$10$ZDXFHI1j.8KDYudPCP0g.OQxf51Tx/ypUi/ONZsaB1Pw4iL/g14WG', '2014-08-27 08:30:34')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Admin::StaffMembersController#create as HTML
+  Parameters: {"staff_member"=>{"email"=>"member1@example.com", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "password"=>"[FILTERED]", "start_date"=>"2014-08-26", "end_date"=>nil, "suspended"=>false}}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member1@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:34', 'member1@example.com', 'member1@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$75da7oFPRHoo.QbDdBgkceYUMvrifYYcLTPaDFnUKFbym7pPZmTqS', '2014-08-26', '2014-08-27 08:30:34')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/admin/staff_members
+Completed 302 Found in 112ms (ActiveRecord: 2.1ms)
+  [1m[35m (15.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAdminMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin2@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:34', 'admin2@example.com', 'admin2@example.com', '$2a$10$xBAsVXrQLxJzVpJ7GWbXWOMvQAtmGw1sA7bWNmQq0fWUUiuld2XGO', '2014-08-27 08:30:34')
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Admin::StaffMembersController#create as HTML
+  [1m[35mAdminMember Load (0.3ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 2 LIMIT 1
+Completed 400 Bad Request in 2ms
+  [1m[36m (1.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAdminMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin3@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'admin3@example.com', 'admin3@example.com', '$2a$10$EaIUh8EpxU96avm4jTYwE.vLJwCm0DX4w..OXRnoabI1j3E5zKvWy', '2014-08-27 08:30:35')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member3@example.com' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'member3@example.com', 'member3@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$kYTTw/Myop5Y7LXc2CB6ZeIXv9AiiNV19qGPiWwoa21TW//SFrrxu', '2014-08-26', '2014-08-27 08:30:35')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Admin::StaffMembersController#update as HTML
+  Parameters: {"staff_member"=>{"email"=>"member2@example.com", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "password"=>"[FILTERED]", "start_date"=>"2014-08-26", "end_date"=>nil, "suspended"=>true}, "id"=>"2"}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 3 LIMIT 1[0m
+  [1m[35mStaffMember Load (0.2ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (11.4ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE (`staff_members`.`email_for_index` = BINARY 'member2@example.com' AND `staff_members`.`id` != 2) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `staff_members` SET `email` = 'member2@example.com', `email_for_index` = 'member2@example.com', `hashed_password` = '$2a$10$jw6CXB3msbGhxp/VhbeajujjZMXDk1vd9SsRMgh4ju8QiSPxu01rq', `suspended` = 1, `updated_at` = '2014-08-27 08:30:35' WHERE `staff_members`.`id` = 2[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/admin/staff_members
+Completed 302 Found in 92ms (ActiveRecord: 12.4ms)
+  [1m[36mStaffMember Load (0.2ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 2 LIMIT 1[0m
+  [1m[35m (10.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAdminMember Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin4@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'admin4@example.com', 'admin4@example.com', '$2a$10$FqKOGJDAQj9.UUO7vEWIaOT.dJnBjHqFC7LyfgevhLME8WY2aFeNO', '2014-08-27 08:30:35')
+  [1m[36m (0.6ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member5@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'member5@example.com', 'member5@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$0ftRCAgXx5CRd9vdhgVB6OF98T0QijUu0unMFsAQy03kkWbKAGcAu', '2014-08-26', '2014-08-27 08:30:35')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Admin::StaffMembersController#update as HTML
+  Parameters: {"staff_member"=>{"email"=>"member4@example.com", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "start_date"=>"2014-08-26", "end_date"=>nil, "suspended"=>false, "hashed_password"=>"[FILTERED]"}, "id"=>"3"}
+  [1m[35mAdminMember Load (0.3ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 4 LIMIT 1
+  [1m[36mStaffMember Load (0.2ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 3 LIMIT 1[0m
+Unpermitted parameters: hashed_password
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE (`staff_members`.`email_for_index` = BINARY 'member4@example.com' AND `staff_members`.`id` != 3) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE `staff_members` SET `email` = 'member4@example.com', `email_for_index` = 'member4@example.com', `updated_at` = '2014-08-27 08:30:35' WHERE `staff_members`.`id` = 3
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/admin/staff_members
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+  [1m[35m (1.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAdminMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin5@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'admin5@example.com', 'admin5@example.com', '$2a$10$J3sA1vwFaneeh9ZWIUTfNu.sbPmU/sGHhls2zpyqLjwxftjTXY.Mi', '2014-08-27 08:30:35')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Admin::TopController#index as HTML
+  [1m[35mAdminMember Load (0.3ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 5 LIMIT 1
+Completed 200 OK in 61ms (Views: 59.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAdminMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin6@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'admin6@example.com', 'admin6@example.com', '$2a$10$bj1u48fFjnDVQX9P1prMIO8tcF/JXn7bT0Y6YO2tlCW28i2eCqpCi', '2014-08-27 08:30:35')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `admin_members` SET `admin_members`.`suspended` = 1 WHERE `admin_members`.`id` = 6[0m
+Processing by Admin::TopController#index as HTML
+  [1m[35mAdminMember Load (0.2ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 6 LIMIT 1
+Redirected to http://baukis.example.com/admin
+Filter chain halted as :check_account rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (1.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAdminMember Exists (0.4ms)[0m  SELECT  1 AS one FROM `admin_members`  WHERE `admin_members`.`email_for_index` = BINARY 'admin7@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `admin_members` (`created_at`, `email`, `email_for_index`, `hashed_password`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'admin7@example.com', 'admin7@example.com', '$2a$10$G2A8y8bH2fg6kOvi/aY9I.KWeIPuppCycQ6wvfnF2iQZmCYW3EuVu', '2014-08-27 08:30:35')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Admin::TopController#index as HTML
+  [1m[36mAdminMember Load (0.1ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 7 LIMIT 1[0m
+Redirected to http://baukis.example.com/admin/login
+Filter chain halted as :check_timeout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (1.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by Staff::AccountsController#show as HTML
+Redirected to http://baukis.example.com/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member6@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'member6@example.com', 'member6@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$MxEV5NNOsZhWTf8jEyaAJ.m0IaxsSHhWp/xXxGOZy9quTZjOsUIyq', '2014-08-26', '2014-08-27 08:30:35')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Staff::AccountsController#update as HTML
+  Parameters: {"id"=>"4", "staff_member"=>{"email"=>"test@example.com", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "password"=>"[FILTERED]", "start_date"=>"2014-08-26", "end_date"=>nil, "suspended"=>false}}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 4 LIMIT 1
+Unpermitted parameters: password, start_date, end_date, suspended
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE (`staff_members`.`email_for_index` = BINARY 'test@example.com' AND `staff_members`.`id` != 4) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `staff_members` SET `email` = 'test@example.com', `email_for_index` = 'test@example.com', `updated_at` = '2014-08-27 08:30:35' WHERE `staff_members`.`id` = 4[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/account
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms)
+  [1m[36mStaffMember Load (0.8ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 4 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member8@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:35', 'member8@example.com', 'member8@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$rCII2jLTirZCxY7u465MlOJQJUvcz9W63twGMS04Gmnn/Cqjs8DHa', '2014-08-26', '2014-08-27 08:30:35')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Staff::AccountsController#update as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mStaffMember Load (0.8ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 5 LIMIT 1
+Completed 400 Bad Request in 2ms
+  [1m[36m (9.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member9@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:36', 'member9@example.com', 'member9@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$9AuDdHYK/zMhbOxlfxzulOaEch0t/LFZwUFM5MWUJasmhXQXRJkrq', '2014-08-26', '2014-08-27 08:30:36')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Staff::AccountsController#update as HTML
+  Parameters: {"id"=>"6", "staff_member"=>{"email"=>"member10@example.com", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "password"=>"[FILTERED]", "start_date"=>"2014-08-26", "end_date"=>"2014-08-28", "suspended"=>false}}
+  [1m[36mStaffMember Load (0.1ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 6 LIMIT 1[0m
+Unpermitted parameters: password, start_date, end_date, suspended
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE (`staff_members`.`email_for_index` = BINARY 'member10@example.com' AND `staff_members`.`id` != 6) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `staff_members` SET `email` = 'member10@example.com', `email_for_index` = 'member10@example.com', `updated_at` = '2014-08-27 08:30:36' WHERE `staff_members`.`id` = 6
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/account
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+  [1m[35m (2.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member11@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:36', 'member11@example.com', 'member11@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$SP6rrtxZOZ.6QWnt/18Rre1.xU/c/9jBWs/9gmiCsVXCKItRPDvGe', '2014-08-26', '2014-08-27 08:30:36')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Staff::AccountsController#update as HTML
+  Parameters: {"id"=>"7", "staff_member"=>{"email"=>"member12@example.com", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "password"=>"[FILTERED]", "start_date"=>"2014-08-26", "end_date"=>nil, "suspended"=>true}}
+  [1m[35mStaffMember Load (0.9ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 7 LIMIT 1
+Unpermitted parameters: password, start_date, end_date, suspended
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE (`staff_members`.`email_for_index` = BINARY 'member12@example.com' AND `staff_members`.`id` != 7) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `staff_members` SET `email` = 'member12@example.com', `email_for_index` = 'member12@example.com', `updated_at` = '2014-08-27 08:30:36' WHERE `staff_members`.`id` = 7[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/account
+Completed 302 Found in 10ms (ActiveRecord: 1.7ms)
+  [1m[36m (1.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member13@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:36', 'member13@example.com', 'member13@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$vchq0ggv22DwrPb3rXhQbOzWTjqFdk12grcmTvazHh7awMcToX/rK', '2014-08-26', '2014-08-27 08:30:36')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Staff::TopController#index as HTML
+  [1m[36mStaffMember Load (0.5ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 8 LIMIT 1[0m
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (1.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member14@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:36', 'member14@example.com', 'member14@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$yWnABt0F1SExoYbH221NrOrFEXkH6hrv9WBmLV3KjA8bEuqYzzLzu', '2014-08-26', '2014-08-27 08:30:36')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `staff_members` SET `staff_members`.`suspended` = 1 WHERE `staff_members`.`id` = 9
+Processing by Staff::TopController#index as HTML
+  [1m[36mStaffMember Load (0.5ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 9 LIMIT 1[0m
+Redirected to http://baukis.example.com/
+Filter chain halted as :check_account rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member15@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:36', 'member15@example.com', 'member15@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$r2XbvR/OOsMS4Mqtkm0iBeidGyFMpJe3QjOvAgiyFChK5qteRxREa', '2014-08-26', '2014-08-27 08:30:36')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Staff::TopController#index as HTML
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 10 LIMIT 1
+Redirected to http://baukis.example.com/login
+Filter chain halted as :check_timeout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (9.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:36', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$PehJsY6zxb4lj1S3Tkm4UerQ1tyoGnVG0Gj7XTO2k9LIEEHmOh6i6', '2014-08-27 08:30:36')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:36', 1, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:36')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:36', 1, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:36')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.2ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member16@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:36', 'member16@example.com', 'member16@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$iQCBV9X436IxHfdljIeFUuO827ocRnN1qeCt.S9JgI.JDhAkAY4hy', '2014-08-26', '2014-08-27 08:30:36')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:36 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (1.1ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 465ms (Views: 423.6ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:37 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member16@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.4ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member16@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:37', 11, 'logged_in')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/
+Completed 302 Found in 119ms (ActiveRecord: 2.0ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:37 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 11 LIMIT 1[0m
+  Rendered staff/shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:37 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 11 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (103.4ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (1.8ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 255ms (Views: 242.0ms | ActiveRecord: 2.2ms)
+Started GET "/customers/new" for 127.0.0.1 at 2014-08-27 08:30:37 +0000
+Processing by Staff::CustomersController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 11 LIMIT 1[0m
+  Rendered staff/customers/_phone_fields.html.erb (11.0ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.9ms)
+  Rendered staff/customers/_customer_fields.html.erb (77.7ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.2ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_home_address_fields.html.erb (27.4ms)
+  Rendered staff/customers/_phone_fields.html.erb (2.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_work_address_fields.html.erb (15.2ms)
+  Rendered staff/customers/_form.html.erb (188.0ms)
+  Rendered staff/shared/_header.html.erb (1.2ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 309ms (Views: 260.4ms | ActiveRecord: 1.5ms)
+Started POST "/customers" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"test@example.jp", "password"=>"[FILTERED]", "family_name"=>"試験", "given_name"=>"花子", "family_name_kana"=>"シケン", "given_name_kana"=>"ハナコ", "birthday"=>"1970-01-01", "gender"=>"female", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"1000001", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"千代田1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"", "postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"登録", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 11 LIMIT 1
+Unpermitted parameters: phones
+Unpermitted parameters: email, password, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'test@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:38', 'test@example.jp', 'test@example.jp', '試験', 'シケン', 'female', '花子', 'ハナコ', '$2a$10$flZcsE0NxkL6.ZuiGU0RQ.frs2OqSKQgS5yazSH0208EjYTFjdHZe', '2014-08-27 08:30:38')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('千代田1-1-1', '', '千代田区', '2014-08-27 08:30:38', 2, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:38')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('', '', '', 'テスト', '2014-08-27 08:30:38', 2, '', '', 'WorkAddress', '2014-08-27 08:30:38')[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 103ms (ActiveRecord: 1.5ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 11 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (19.0ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 50.9ms | ActiveRecord: 1.0ms)
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`id` DESC LIMIT 1
+  [1m[36mHomeAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 2 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 2 LIMIT 1
+  [1m[36m (17.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.2ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:38', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$jp7R9Sg7jfCd4UHC/xsOlO2/01dSvbwsTapKH911jq2RsqmwfeJEO', '2014-08-27 08:30:38')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:38', 3, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:38')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:38', 3, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:38')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.2ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member17@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:38', 'member17@example.com', 'member17@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$rmuo/cpScZnqHgAaRyS6gewHF2YFOfmvpJPCM0g1jeB8iav0vnL8i', '2014-08-26', '2014-08-27 08:30:38')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member17@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member17@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:38', 12, 'logged_in')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/
+Completed 302 Found in 81ms (ActiveRecord: 1.1ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.5ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 12 LIMIT 1[0m
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.5ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 12 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (29.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (1.2ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 61ms (Views: 58.8ms | ActiveRecord: 0.8ms)
+Started GET "/customers/3/edit" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::CustomersController#edit as HTML
+  Parameters: {"host"=>"baukis.example.com", "id"=>"3"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 12 LIMIT 1[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 3 LIMIT 1
+  [1m[36m (8.9ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 3 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 3 LIMIT 1
+  [1m[36mWorkAddress Load (0.8ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 5
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 6[0m
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.7ms)
+  Rendered staff/customers/_customer_fields.html.erb (10.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (2.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.5ms)
+  Rendered staff/customers/_home_address_fields.html.erb (11.9ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.5ms)
+  Rendered staff/customers/_work_address_fields.html.erb (15.4ms)
+  Rendered staff/customers/_form.html.erb (40.5ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 117ms (Views: 84.7ms | ActiveRecord: 11.1ms)
+Started PATCH "/customers/3" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"test@example.jp", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "birthday"=>"1970-01-01", "gender"=>"male", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"9999999", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"開発部", "postal_code"=>"1050000", "prefecture"=>"東京都", "city"=>"港区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"更新", "host"=>"baukis.example.com", "id"=>"3"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 12 LIMIT 1
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 3 AND `phones`.`address_id` IS NULL
+  [1m[36mHomeAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 3 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.5ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 3 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 5[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 6
+Unpermitted parameters: phones
+Unpermitted parameters: email, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.2ms)[0m  SELECT  1 AS one FROM `customers`  WHERE (`customers`.`email_for_index` = BINARY 'test@example.jp' AND `customers`.`id` != 3) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `customers` SET `email` = 'test@example.jp', `email_for_index` = 'test@example.jp', `updated_at` = '2014-08-27 08:30:38' WHERE `customers`.`id` = 3[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `addresses` SET `postal_code` = '9999999', `updated_at` = '2014-08-27 08:30:38' WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`id` = 5
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 26ms (ActiveRecord: 3.5ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:38 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 12 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (27.0ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 61ms (Views: 57.5ms | ActiveRecord: 0.8ms)
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 3 LIMIT 1[0m
+  [1m[35mHomeAddress Load (0.2ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 3 LIMIT 1
+  [1m[36mWorkAddress Load (0.2ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 3 LIMIT 1[0m
+  [1m[35m (11.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member3@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:38', 'member3@example.jp', 'member3@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$B.tTk7m4JP6xzxLZjaNYTuIKjHvIYW/AX5N7.hhOLtlbGxHCZFm/S', '2014-08-27 08:30:38')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:38', 4, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:38')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:38', 4, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:38')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member18@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:39', 'member18@example.com', 'member18@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$WR85mvg8XODU.9nS6XBEcuKDqq5VmSX6dAPfKfvEkhgh6Kkkdmjhm', '2014-08-26', '2014-08-27 08:30:39')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:39 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.2ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 30ms (Views: 29.7ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:39 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member18@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member18@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:39', 13, 'logged_in')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/
+Completed 302 Found in 76ms (ActiveRecord: 0.7ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:39 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 13 LIMIT 1
+  Rendered staff/shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:39 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.6ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 13 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (28.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 73ms (Views: 68.2ms | ActiveRecord: 1.3ms)
+Started GET "/customers/4/edit" for 127.0.0.1 at 2014-08-27 08:30:39 +0000
+Processing by Staff::CustomersController#edit as HTML
+  Parameters: {"host"=>"baukis.example.com", "id"=>"4"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 13 LIMIT 1
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 4 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 4 AND `phones`.`address_id` IS NULL
+  [1m[36mHomeAddress Load (1.0ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 4 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 4 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 8
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.0ms)
+  Rendered staff/customers/_customer_fields.html.erb (10.9ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.0ms)
+  Rendered staff/customers/_home_address_fields.html.erb (11.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.8ms)
+  Rendered staff/customers/_work_address_fields.html.erb (12.2ms)
+  Rendered staff/customers/_form.html.erb (36.6ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 71ms (Views: 58.1ms | ActiveRecord: 2.5ms)
+Started PATCH "/customers/4" for 127.0.0.1 at 2014-08-27 08:30:39 +0000
+Processing by Staff::CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"member3@example.jp", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "birthday"=>"2100-01-01", "gender"=>"male", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"XYZ", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"開発部", "postal_code"=>"1050000", "prefecture"=>"東京都", "city"=>"港区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"更新", "host"=>"baukis.example.com", "id"=>"4"}
+  [1m[36mStaffMember Load (0.2ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 13 LIMIT 1[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 4 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 4 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.5ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 4 LIMIT 1
+  [1m[36mWorkAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 4 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 7
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 8[0m
+Unpermitted parameters: phones
+Unpermitted parameters: email, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE (`customers`.`email_for_index` = BINARY 'member3@example.jp' AND `customers`.`id` != 4) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered staff/customers/_phone_fields.html.erb (1.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.5ms)
+  Rendered staff/customers/_customer_fields.html.erb (16.2ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.2ms)
+  Rendered staff/customers/_home_address_fields.html.erb (20.6ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_work_address_fields.html.erb (12.9ms)
+  Rendered staff/customers/_form.html.erb (51.4ms)
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 627ms (Views: 73.7ms | ActiveRecord: 2.8ms)
+  [1m[36m (5.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member4@example.jp' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:40', 'member4@example.jp', 'member4@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$Ug1Ljd1h4Zd2ZziOHH6OAechHcJIxEMmR/Dqox/KH00KTpK4JbuPK', '2014-08-27 08:30:40')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:40', 5, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:40')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:40', 5, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:40')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member19@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:40', 'member19@example.com', 'member19@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$IRsY0sN34ptztvD8ziBtY.ZXXDFO8wr8Ds5tTDU8zN8HCoj1Wt8zK', '2014-08-26', '2014-08-27 08:30:40')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member19@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.4ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member19@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:40', 14, 'logged_in')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/
+Completed 302 Found in 79ms (ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 14 LIMIT 1[0m
+  Rendered staff/shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 14 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (18.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 0.9ms)
+Started GET "/customers/new" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::CustomersController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 14 LIMIT 1[0m
+  Rendered staff/customers/_phone_fields.html.erb (3.4ms)
+  Rendered staff/customers/_phone_fields.html.erb (2.2ms)
+  Rendered staff/customers/_customer_fields.html.erb (23.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (2.0ms)
+  Rendered staff/customers/_phone_fields.html.erb (12.0ms)
+  Rendered staff/customers/_home_address_fields.html.erb (22.9ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.9ms)
+  Rendered staff/customers/_work_address_fields.html.erb (12.6ms)
+  Rendered staff/customers/_form.html.erb (60.1ms)
+  Rendered staff/shared/_header.html.erb (0.3ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 87ms (Views: 80.5ms | ActiveRecord: 0.3ms)
+Started POST "/customers" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"test@example.jp", "password"=>"[FILTERED]", "family_name"=>"試験", "given_name"=>"花子", "family_name_kana"=>"シケン", "given_name_kana"=>"ハナコ", "birthday"=>"1970-01-01", "gender"=>"female", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"0", "home_address"=>{"postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"0", "work_address"=>{"company_name"=>"", "division_name"=>"", "postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"登録", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.4ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 14 LIMIT 1
+Unpermitted parameters: phones
+Unpermitted parameters: email, password, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'test@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:40', 'test@example.jp', 'test@example.jp', '試験', 'シケン', 'female', '花子', 'ハナコ', '$2a$10$FsChrZCZI6ahfesiksURC.Jv/n1o.bg3eUaNRkkRg7nGopfefTF0C', '2014-08-27 08:30:40')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 88ms (ActiveRecord: 1.2ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 14 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (29.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (1.0ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 65ms (Views: 62.2ms | ActiveRecord: 0.9ms)
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`id` DESC LIMIT 1
+  [1m[36mHomeAddress Load (0.2ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 6 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 6 LIMIT 1
+  [1m[36m (8.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.4ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member5@example.jp' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:40', 'member5@example.jp', 'member5@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$j9vUy7qBxDL4j2zMmlDvfOaJHlXvMy.R8Q1MC3DYqdeCmIB74k.eC', '2014-08-27 08:30:40')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:40', 7, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:40')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:40', 7, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:40')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.5ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member20@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:40', 'member20@example.com', 'member20@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$ldsxJg03eQ5kVUeqowMv0u0Sn6ksC32n1Vo5E.vMk580IOMoRGkJ6', '2014-08-26', '2014-08-27 08:30:40')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member20@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member20@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:40', 15, 'logged_in')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/
+Completed 302 Found in 76ms (ActiveRecord: 0.7ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:40 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 15 LIMIT 1[0m
+  Rendered staff/shared/_header.html.erb (1.4ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPhone Load (0.3ms)[0m  [1mSELECT `phones`.* FROM `phones`  WHERE `phones`.`address_id` = 12  ORDER BY `phones`.`id` ASC[0m
+  [1m[35mSQL (9.8ms)[0m  DELETE FROM `addresses` WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`id` = 12
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 15 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (26.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 70ms (Views: 66.6ms | ActiveRecord: 0.9ms)
+Started GET "/customers/7/edit" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#edit as HTML
+  Parameters: {"host"=>"baukis.example.com", "id"=>"7"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 15 LIMIT 1[0m
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 7 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 7 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 7 LIMIT 1
+  [1m[36mWorkAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 7 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 11
+  Rendered staff/customers/_phone_fields.html.erb (1.4ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.2ms)
+  Rendered staff/customers/_customer_fields.html.erb (12.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_home_address_fields.html.erb (12.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.7ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_work_address_fields.html.erb (20.7ms)
+  Rendered staff/customers/_form.html.erb (46.8ms)
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 88ms (Views: 76.3ms | ActiveRecord: 1.7ms)
+Started PATCH "/customers/7" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"member5@example.jp", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "birthday"=>"1970-01-01", "gender"=>"male", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"1000001", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テストテスト", "division_name"=>"", "postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"更新", "host"=>"baukis.example.com", "id"=>"7"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 15 LIMIT 1[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 7 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 7 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.8ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 7 LIMIT 1
+  [1m[36mWorkAddress Load (0.2ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 7 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 11
+Unpermitted parameters: phones
+Unpermitted parameters: email, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE (`customers`.`email_for_index` = BINARY 'member5@example.jp' AND `customers`.`id` != 7) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('', '', '', 'テストテスト', '2014-08-27 08:30:41', 7, '', '', 'WorkAddress', '2014-08-27 08:30:41')[0m
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 22ms (ActiveRecord: 3.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 15 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (24.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (1.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 65ms (Views: 62.1ms | ActiveRecord: 0.9ms)
+  [1m[35mCustomer Load (0.5ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 7 LIMIT 1
+  [1m[36mWorkAddress Load (0.7ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 7 LIMIT 1[0m
+  [1m[35m (9.5ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member6@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:41', 'member6@example.jp', 'member6@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$pNVC70JCcr3l4vhOo7uZsufUA3Qu3981PD.AumoJPPVlF8a0JiijK', '2014-08-27 08:30:41')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:41', 8, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:41')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:41', 8, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:41')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member21@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:41', 'member21@example.com', 'member21@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$mtN.UbQ2h1cfmSBvMFXcmebWUdYEPxwk59GsYOxYK5agBVxCI.NNy', '2014-08-26', '2014-08-27 08:30:41')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 28ms (Views: 27.6ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member21@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.4ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member21@example.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:41', 16, 'logged_in')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/
+Completed 302 Found in 91ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 16 LIMIT 1
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 16 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (24.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 53ms (Views: 49.9ms | ActiveRecord: 1.0ms)
+Started GET "/customers/new" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.4ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 16 LIMIT 1
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_customer_fields.html.erb (12.7ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.4ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.6ms)
+  Rendered staff/customers/_home_address_fields.html.erb (11.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.9ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.4ms)
+  Rendered staff/customers/_work_address_fields.html.erb (24.3ms)
+  Rendered staff/customers/_form.html.erb (50.2ms)
+  Rendered staff/shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 95ms (Views: 88.8ms | ActiveRecord: 0.4ms)
+Started POST "/customers" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"test@example.jp", "password"=>"[FILTERED]", "family_name"=>"試験", "given_name"=>"花子", "family_name_kana"=>"シケン", "given_name_kana"=>"ハナコ", "birthday"=>"1970-01-01", "gender"=>"female", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"1000001", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"千代田1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"0", "work_address"=>{"company_name"=>"", "division_name"=>"", "postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"登録", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 16 LIMIT 1[0m
+Unpermitted parameters: phones
+Unpermitted parameters: email, password, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'test@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:41', 'test@example.jp', 'test@example.jp', '試験', 'シケン', 'female', '花子', 'ハナコ', '$2a$10$MHytSLpBeek/3u1JK17oJ.StXosXbx285IUQmaouDm9zWFkFzAqTq', '2014-08-27 08:30:41')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('千代田1-1-1', '', '千代田区', '2014-08-27 08:30:41', 9, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:41')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 91ms (ActiveRecord: 2.0ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:41 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 16 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (23.1ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 64ms (Views: 60.5ms | ActiveRecord: 0.6ms)
+  [1m[35mCustomer Load (0.7ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`id` DESC LIMIT 1
+  [1m[36mHomeAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 9 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.2ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 9 LIMIT 1
+  [1m[36m (9.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.7ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member7@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:42', 'member7@example.jp', 'member7@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$DJ8r9XXT7JMRxF1paK.m1.osHq2DsozJ.AM3mFbDvmKojhO5A.Zu2', '2014-08-27 08:30:42')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:42', 10, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:42')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:42', 10, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:42')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member22@example.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:42', 'member22@example.com', 'member22@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$8Chz2DKezUQJM/CSkWhOTe5A0/sjlkMEhle3SRw9ZICyN7li077TC', '2014-08-26', '2014-08-27 08:30:42')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 32ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member22@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member22@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:42', 17, 'logged_in')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/
+Completed 302 Found in 78ms (ActiveRecord: 0.7ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 17 LIMIT 1[0m
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 29ms (Views: 26.2ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 17 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (23.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 54ms (Views: 50.8ms | ActiveRecord: 0.8ms)
+Started GET "/customers/new" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::CustomersController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.5ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 17 LIMIT 1[0m
+  Rendered staff/customers/_phone_fields.html.erb (2.6ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.7ms)
+  Rendered staff/customers/_customer_fields.html.erb (17.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (2.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.8ms)
+  Rendered staff/customers/_home_address_fields.html.erb (18.0ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.0ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.9ms)
+  Rendered staff/customers/_work_address_fields.html.erb (11.5ms)
+  Rendered staff/customers/_form.html.erb (49.2ms)
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 85ms (Views: 74.9ms | ActiveRecord: 0.5ms)
+Started POST "/customers" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"test@example.jp", "password"=>"[FILTERED]", "family_name"=>"試験", "given_name"=>"花子", "family_name_kana"=>"シケン", "given_name_kana"=>"ハナコ", "birthday"=>"1970-01-01", "gender"=>"female", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"0", "home_address"=>{"postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"", "postal_code"=>"", "prefecture"=>"", "city"=>"", "address1"=>"", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"登録", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (2.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 17 LIMIT 1
+Unpermitted parameters: phones
+Unpermitted parameters: email, password, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.2ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'test@example.jp' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:42', 'test@example.jp', 'test@example.jp', '試験', 'シケン', 'female', '花子', 'ハナコ', '$2a$10$cDhnXPtRK/76EUwXhvvawOWzrzf3R9TMY0GGkQtLsWhpvODP9jJay', '2014-08-27 08:30:42')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('', '', '', 'テスト', '2014-08-27 08:30:42', 11, '', '', 'WorkAddress', '2014-08-27 08:30:42')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 97ms (ActiveRecord: 3.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.0ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 17 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (20.9ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 55ms (Views: 52.2ms | ActiveRecord: 0.8ms)
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`id` DESC LIMIT 1[0m
+  [1m[35mHomeAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 11 LIMIT 1
+  [1m[36mWorkAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 11 LIMIT 1[0m
+  [1m[35m (8.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member8@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:42', 'member8@example.jp', 'member8@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$zVpMilbSbIP42wfrtiWNhOdhbKbchOTLoY1sSBsTjVUVFshDyZteS', '2014-08-27 08:30:42')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:42', 12, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:42')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:42', 12, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:42')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member23@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:42', 'member23@example.com', 'member23@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$FNm4l8bmK8FgYCh0qS7cbOKoWxbJ1KZvXAF/zXdLMa5q9sC9i6uxm', '2014-08-26', '2014-08-27 08:30:42')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member23@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member23@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:42', 18, 'logged_in')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/
+Completed 302 Found in 77ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:42 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 18 LIMIT 1
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 18 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (16.9ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 48ms (Views: 45.2ms | ActiveRecord: 0.8ms)
+Started GET "/customers/12/edit" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#edit as HTML
+  Parameters: {"host"=>"baukis.example.com", "id"=>"12"}
+  [1m[35mStaffMember Load (0.2ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 18 LIMIT 1
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 12 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 12 AND `phones`.`address_id` IS NULL
+  [1m[36mHomeAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 12 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.2ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 12 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 20[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 21
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.7ms)
+  Rendered staff/customers/_customer_fields.html.erb (28.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.6ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.3ms)
+  Rendered staff/customers/_home_address_fields.html.erb (13.6ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.8ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.0ms)
+  Rendered staff/customers/_work_address_fields.html.erb (13.4ms)
+  Rendered staff/customers/_form.html.erb (57.3ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 90ms (Views: 78.2ms | ActiveRecord: 1.7ms)
+Started PATCH "/customers/12" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"member8@example.jp", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "birthday"=>"1970-01-01", "gender"=>"male", "phones"=>{"0"=>{"number"=>"090-9999-9999", "primary"=>"1"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"1000001", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"開発部", "postal_code"=>"1050000", "prefecture"=>"東京都", "city"=>"港区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"更新", "host"=>"baukis.example.com", "id"=>"12"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 18 LIMIT 1[0m
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 12 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 12 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 12 LIMIT 1
+  [1m[36mWorkAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 12 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 20
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 21[0m
+Unpermitted parameters: phones
+Unpermitted parameters: email, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE (`customers`.`email_for_index` = BINARY 'member8@example.jp' AND `customers`.`id` != 12) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `phones` (`created_at`, `customer_id`, `last_four_digits`, `number`, `number_for_index`, `primary`, `updated_at`) VALUES ('2014-08-27 08:30:43', 12, '9999', '090-9999-9999', '09099999999', 1, '2014-08-27 08:30:43')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 45ms (ActiveRecord: 2.7ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.4ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 18 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (18.9ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 61ms (Views: 57.2ms | ActiveRecord: 0.9ms)
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 12 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 12 AND `phones`.`address_id` IS NULL
+  [1m[36mPhone Load (0.9ms)[0m  [1mSELECT `phones`.* FROM `phones`  WHERE `phones`.`customer_id` = 12 AND `phones`.`address_id` IS NULL  ORDER BY `phones`.`id` ASC[0m
+  [1m[35m (1.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member9@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:43', 'member9@example.jp', 'member9@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$L62D0uQZcIpwf9dsFPZBhuDo5QLNdDtBbHsrw2aGggWyhoflAwWFG', '2014-08-27 08:30:43')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:43', 13, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:43')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:43', 13, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:43')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member24@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:43', 'member24@example.com', 'member24@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$aiNLjBygDnvmjqlrnxU2N.Gh1/BjPeT/OH3px711YyUDeuy.LbIvC', '2014-08-26', '2014-08-27 08:30:43')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member24@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member24@example.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:43', 19, 'logged_in')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/
+Completed 302 Found in 77ms (ActiveRecord: 0.8ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 19 LIMIT 1
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 19 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (16.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.2ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 45ms (Views: 41.8ms | ActiveRecord: 0.7ms)
+Started GET "/customers/13/edit" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#edit as HTML
+  Parameters: {"host"=>"baukis.example.com", "id"=>"13"}
+  [1m[35mStaffMember Load (0.4ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 19 LIMIT 1
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 13 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 13 AND `phones`.`address_id` IS NULL
+  [1m[36mHomeAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 13 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.2ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 13 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 22[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 23
+  Rendered staff/customers/_phone_fields.html.erb (1.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.9ms)
+  Rendered staff/customers/_customer_fields.html.erb (10.7ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.8ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.0ms)
+  Rendered staff/customers/_home_address_fields.html.erb (10.0ms)
+  Rendered staff/customers/_phone_fields.html.erb (2.2ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.8ms)
+  Rendered staff/customers/_work_address_fields.html.erb (13.3ms)
+  Rendered staff/customers/_form.html.erb (35.8ms)
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 77ms (Views: 66.4ms | ActiveRecord: 1.7ms)
+Started PATCH "/customers/13" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"member9@example.jp", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "birthday"=>"1970-01-01", "gender"=>"male", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"1000001", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"03-9999-9999", "primary"=>"1"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"開発部", "postal_code"=>"1050000", "prefecture"=>"東京都", "city"=>"港区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"更新", "host"=>"baukis.example.com", "id"=>"13"}
+  [1m[36mStaffMember Load (0.4ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 19 LIMIT 1[0m
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 13 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 13 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.2ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 13 LIMIT 1
+  [1m[36mWorkAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 13 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 22
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 23[0m
+Unpermitted parameters: phones
+Unpermitted parameters: email, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE (`customers`.`email_for_index` = BINARY 'member9@example.jp' AND `customers`.`id` != 13) LIMIT 1[0m
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`id` = 22 LIMIT 1
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 13 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `phones` (`address_id`, `created_at`, `customer_id`, `last_four_digits`, `number`, `number_for_index`, `primary`, `updated_at`) VALUES (22, '2014-08-27 08:30:43', 13, '9999', '03-9999-9999', '0399999999', 1, '2014-08-27 08:30:43')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 42ms (ActiveRecord: 3.6ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:43 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 19 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (64.0ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 95ms (Views: 92.5ms | ActiveRecord: 0.8ms)
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 13 LIMIT 1[0m
+  [1m[35mHomeAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 13 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 22[0m
+  [1m[35mPhone Load (0.2ms)[0m  SELECT `phones`.* FROM `phones`  WHERE `phones`.`address_id` = 22  ORDER BY `phones`.`id` ASC
+  [1m[36m (12.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member10@example.jp' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-27 08:30:44', 'member10@example.jp', 'member10@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$FRDFsbmam6Q2xV/ph2RkaOUTVFfqBxQYy1ixteM6TQdJtMh1K/MOC', '2014-08-27 08:30:44')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-27 08:30:44', 14, '1000001', '東京都', 'HomeAddress', '2014-08-27 08:30:44')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-27 08:30:44', 14, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-27 08:30:44')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member25@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:44', 'member25@example.com', 'member25@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$45jsZMQ2YdQigYnsGHL1zes86ePwJ1ImspUvsZ6tX/8Qvvu6Vjr3e', '2014-08-26', '2014-08-27 08:30:44')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered staff/shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+Started POST "/session" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "staff_login_form"=>{"email"=>"member25@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.4ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`email_for_index` = 'member25@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-27 08:30:44', 20, 'logged_in')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/
+Completed 302 Found in 88ms (ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 20 LIMIT 1[0m
+  Rendered staff/shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.3ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mStaffMember Load (0.4ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 20 LIMIT 1
+  Rendered staff/customers/_search_form.html.erb (19.6ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `customers`[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 0.9ms)
+Started GET "/customers/14/edit" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::CustomersController#edit as HTML
+  Parameters: {"host"=>"baukis.example.com", "id"=>"14"}
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 20 LIMIT 1[0m
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 14 LIMIT 1
+  [1m[36m (8.8ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 14 AND `phones`.`address_id` IS NULL[0m
+  [1m[35mHomeAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 14 LIMIT 1
+  [1m[36mWorkAddress Load (0.3ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 14 LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 24
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 25[0m
+  Rendered staff/customers/_phone_fields.html.erb (0.9ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.2ms)
+  Rendered staff/customers/_customer_fields.html.erb (11.5ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.9ms)
+  Rendered staff/customers/_home_address_fields.html.erb (9.7ms)
+  Rendered staff/customers/_phone_fields.html.erb (1.1ms)
+  Rendered staff/customers/_phone_fields.html.erb (0.8ms)
+  Rendered staff/customers/_work_address_fields.html.erb (10.6ms)
+  Rendered staff/customers/_form.html.erb (33.5ms)
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 79ms (Views: 56.1ms | ActiveRecord: 10.9ms)
+Started PATCH "/customers/14" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "form"=>{"customer"=>{"email"=>"member10@example.jp", "family_name"=>"山田", "given_name"=>"太郎", "family_name_kana"=>"ヤマダ", "given_name_kana"=>"タロウ", "birthday"=>"1970-01-01", "gender"=>"male", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_home_address"=>"1", "home_address"=>{"postal_code"=>"1000001", "prefecture"=>"東京都", "city"=>"千代田区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"", "primary"=>"0"}, "1"=>{"number"=>"", "primary"=>"0"}}}, "inputs_work_address"=>"1", "work_address"=>{"company_name"=>"テスト", "division_name"=>"開発部", "postal_code"=>"1050000", "prefecture"=>"東京都", "city"=>"港区", "address1"=>"試験1-1-1", "address2"=>"", "phones"=>{"0"=>{"number"=>"03-9999-1111", "primary"=>"1"}, "1"=>{"number"=>"", "primary"=>"0"}}}}, "commit"=>"更新", "host"=>"baukis.example.com", "id"=>"14"}
+  [1m[35mStaffMember Load (0.3ms)[0m  SELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 20 LIMIT 1
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 14 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`customer_id` = 14 AND `phones`.`address_id` IS NULL
+  [1m[36mHomeAddress Load (0.2ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('HomeAddress') AND `addresses`.`customer_id` = 14 LIMIT 1[0m
+  [1m[35mWorkAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 14 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 24[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 25
+Unpermitted parameters: phones
+Unpermitted parameters: email, family_name, given_name, family_name_kana, given_name_kana, birthday, gender
+Unpermitted parameters: phones
+Unpermitted parameters: postal_code, prefecture, city, address1, address2
+Unpermitted parameters: phones
+Unpermitted parameters: company_name, division_name, postal_code, prefecture, city, address1, address2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE (`customers`.`email_for_index` = BINARY 'member10@example.jp' AND `customers`.`id` != 14) LIMIT 1
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`id` = 25 LIMIT 1[0m
+  [1m[35mCustomer Load (0.6ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 14 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `phones` (`address_id`, `created_at`, `customer_id`, `last_four_digits`, `number`, `number_for_index`, `primary`, `updated_at`) VALUES (25, '2014-08-27 08:30:44', 14, '1111', '03-9999-1111', '0399991111', 1, '2014-08-27 08:30:44')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://baukis.example.com/customers
+Completed 302 Found in 27ms (ActiveRecord: 3.6ms)
+Started GET "/customers" for 127.0.0.1 at 2014-08-27 08:30:44 +0000
+Processing by Staff::CustomersController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mStaffMember Load (0.5ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 20 LIMIT 1[0m
+  Rendered staff/customers/_search_form.html.erb (18.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `customers`
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT  `customers`.* FROM `customers`   ORDER BY `customers`.`family_name_kana` ASC, `customers`.`given_name_kana` ASC LIMIT 10 OFFSET 0[0m
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 44.7ms | ActiveRecord: 0.9ms)
+  [1m[35mCustomer Load (0.0ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`id` = 14 LIMIT 1
+  [1m[36mWorkAddress Load (0.4ms)[0m  [1mSELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 14 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `phones`  WHERE `phones`.`address_id` = 25
+  [1m[36mPhone Load (0.2ms)[0m  [1mSELECT `phones`.* FROM `phones`  WHERE `phones`.`address_id` = 25  ORDER BY `phones`.`id` ASC[0m
+  [1m[35m (1.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:44', 'test@example.com', 'test@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$5vbFolUPza6zhve0Ahah9O14e4RFdkkhEbrwsomgEnEZ6TjDaDPlO', '2014-08-26', '2014-08-27 08:30:44')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:44', 'test@example.com', 'test@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$M5Z4LeKkZZyxtcC9mljTYuxM7W9oLTFxzf0sDYJR7plzCJ5fZjUE6', '2014-08-26', '2014-08-27 08:30:44')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (10.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:44', 'test@example.com', 'test@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$LciNN8jc65IaoFqeDquvEOIH8S.2RyuVjj88K3PhXadauEp13J6P2', '2014-08-26', '2014-08-27 08:30:44')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member26@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:45', 'member26@example.com', 'member26@example.com', '山田', 'テスト', '太郎', 'タロウ', '$2a$10$dvDuZYj3jetvFq3RjD1wrezIuaQJ06LONd8myP2cJpppW.F3P8NXG', '2014-08-26', '2014-08-27 08:30:45')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member27@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:45', 'member27@example.com', 'member27@example.com', '山田', 'テスト', '太郎', 'タロウ', '$2a$10$CwQbKQOdBmvIdL1Mpu9/sO27e1FhScQO/3G9nyIwWPxosrkWk4iUa', '2014-08-26', '2014-08-27 08:30:45')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'test@@example.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mStaffMember Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member28@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mStaffMember Exists (0.5ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member29@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member30@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `staff_members` (`created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `given_name`, `given_name_kana`, `hashed_password`, `start_date`, `updated_at`) VALUES ('2014-08-27 08:30:45', 'member30@example.com', 'member30@example.com', '山田', 'ヤマダ', '太郎', 'タロウ', '$2a$10$slXKw/ATFU9zoBO.KsSKIeEDS2hICL477Wo74.j5uns/w.T4IMCXe', '2014-08-26', '2014-08-27 08:30:45')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStaffMember Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member30@example.com' LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mStaffMember Exists (0.3ms)[0m  SELECT  1 AS one FROM `staff_members`  WHERE `staff_members`.`email_for_index` = BINARY 'member31@example.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
