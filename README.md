@@ -45,4 +45,4 @@ Vagrant上で実行する場合は、下記通りとなります。
   を任意のドメインに修正（ex.localhostなど）
 
 
-※developmentとtestはmysqlで、productionはheroku無料の縛りから、postgresqlを使用しています。
+※　developmentとtestはmysqlで、productionはheroku無料の縛りから、postgresqlを使用しています。
