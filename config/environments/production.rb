@@ -82,7 +82,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.baukis = {
-   staff: { host: 'rails-experiment.herokuapp.com', path: '' },
+   staff: { host: 'rails-experiment.herokuapp.com', path: 'staff' },
    admin: { host: 'rails-experiment.herokuapp.com', path: 'admin' },
    customer: { host: 'rails-experiment.herokuapp.com', path: 'mypage' }
   }
