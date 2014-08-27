@@ -46,3 +46,11 @@ Vagrant上で実行する場合は、下記通りとなります。
 
 
 ※ developmentとtestはmysqlで、productionはheroku無料の縛りから、postgresqlを使用しています。
+
+※ herokuへアップ時は、developとどう環境にて、下記コマンドでprecompileが必要です。
+
+    bin/rake assets:precompile RAILS_ENV=production
+
+※ テストデータは、下記フォルダを参照のこと。
+
+    db/seeds/
