@@ -5,11 +5,14 @@ OIAX App
 
 ##デモサイトURL @ heroku
 
-  [職員](http://rails-experiment.herokuapp.com/staff)
+  職員
+  >http://rails-experiment.herokuapp.com/staff
   
-  [管理者](http://rails-experiment.herokuapp.com/admin)
+  管理者
+  >http://rails-experiment.herokuapp.com/admin
   
-  [顧客](http://rails-experiment.herokuapp.com/mypage)
+  顧客
+  >http://rails-experiment.herokuapp.com/mypage
 
 ***
 
