@@ -42,7 +42,7 @@ Vagrant上で実行する場合は、下記通りとなります。
 
     config/route.rb
   
-  を任意のドメインに修正（ex. localhostなど）
+  を任意のドメインに修正（ex.localhostなど）
 
 
 なお、development、testはmysqlでproductionはheroku無料の縛りからpostgresqlを使用しています。
