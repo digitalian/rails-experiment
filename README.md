@@ -6,7 +6,7 @@ OIAX default App
 ・デモサイト短縮URL @ heroku
 
   職員
-  > http://rails-experiment.herokuapp.com/
+  > http://rails-experiment.herokuapp.com/staff
   
   管理者
   > http://rails-experiment.herokuapp.com/admin
