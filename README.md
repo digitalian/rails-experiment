@@ -3,21 +3,17 @@ rails-experiment
 
 OIAX App
 
-・デモサイトURL @ heroku
+##デモサイトURL @ heroku
 
-  職員
-  > http://rails-experiment.herokuapp.com/staff
+  [職員](http://rails-experiment.herokuapp.com/staff)
   
-  管理者
-  > http://rails-experiment.herokuapp.com/admin
+  [管理者](http://rails-experiment.herokuapp.com/admin)
   
-  顧客
-  > http://rails-experiment.herokuapp.com/mypage
+  [顧客](http://rails-experiment.herokuapp.com/mypage)
 
+***
 
-
-
-起動準備
+##起動準備
 Vagrant上で実行する場合は、下記通りとなります。
 
 1.Vagrant
@@ -44,6 +40,9 @@ Vagrant上で実行する場合は、下記通りとなります。
   
   を任意のドメインに修正（ex.localhostなど）
 
+***
+
+##補足情報
 
 ※ developmentとtestはmysqlで、productionはheroku無料の縛りから、postgresqlを使用しています。
 
