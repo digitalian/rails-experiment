@@ -8319,3 +8319,327 @@ Completed 200 OK in 48ms (Views: 44.7ms | ActiveRecord: 0.9ms)
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[35m (0.1ms)[0m  BEGIN
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (21.7ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (8.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (11.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:06:32', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$WOwgWtwWFRIMMIQwPooQ7OsNAm9Hml83UyJkNC5xorOuFZwIEMHb2', '2014-08-28 04:06:32')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:06:32', 1, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:06:32')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:06:32', 1, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:06:32')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 137ms (ActiveRecord: 0.3ms)
+  [1m[35m (18.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:06:32', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$G0xbu8qkc5TOMWcE0au7kuHaQJ7nZki0IvvNU.N3qxWxgs7F.L9JC', '2014-08-28 04:06:32')
+  [1m[36mSQL (9.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:06:32', 2, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:06:32')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:06:32', 2, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:06:32')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 94ms (ActiveRecord: 0.4ms)
+  [1m[36m (2.7ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:07:55', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$GQRVq0XrhsfMHE5APVh4SOI7GR03.8x7OuLYbcLWGPj6yoWU/6umq', '2014-08-28 04:07:55')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:07:55', 3, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:07:55')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:07:55', 3, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:07:55')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 108ms (ActiveRecord: 0.3ms)
+  [1m[35m (9.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:07:55', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$mZ7A6l57tqfXMXBrgV1OwuHwoATEr03LC3JqX.GcRP80cQftfn4Va', '2014-08-28 04:07:55')
+  [1m[36mSQL (12.6ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:07:55', 4, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:07:55')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:07:55', 4, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:07:55')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 85ms (ActiveRecord: 0.3ms)
+  [1m[36m (8.7ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:08:55', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$FGlpoCZkIs5fSNT8KgwmpeE7/BGLEPsRXnQocgaeerUo6U6Ol8bZq', '2014-08-28 04:08:55')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:08:55', 5, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:08:55')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:08:55', 5, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:08:55')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 127ms (ActiveRecord: 0.3ms)
+  [1m[35m (10.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:08:55', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$82tSInS8ExF7Uyz.12ZzhezEgAoUHBlHuOWsZY4QjQFOu4bwHG8.W', '2014-08-28 04:08:55')
+  [1m[36mSQL (2.9ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:08:55', 6, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:08:55')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:08:55', 6, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:08:55')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 99ms (ActiveRecord: 0.3ms)
+  [1m[36m (11.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:11:06', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$T3c6yDnWs0WthLO/wK2izeeDRqP9LQQE.irDVE1irI1wU6s3xdxj6', '2014-08-28 04:11:06')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:11:06', 7, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:11:06')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:11:06', 7, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:11:06')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (1.8ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 115ms (ActiveRecord: 1.8ms)
+  [1m[35m (11.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:11:06', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$JBIuna.2zKzvwWCSKXI9auRECi8U7t/VXj4ujRfV1HL1233MRq21S', '2014-08-28 04:11:06')
+  [1m[36mSQL (5.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:11:06', 8, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:11:06')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:11:06', 8, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:11:06')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 92ms (ActiveRecord: 0.4ms)
+  [1m[36m (10.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:13:54', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$3wgGZYPoyApX7Wmzf1ivweqzyRKziC56Yq1soQXWoPPwi3HP6nkHK', '2014-08-28 04:13:54')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:13:54', 9, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:13:54')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:13:54', 9, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:13:54')[0m
+  [1m[35m (0.6ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 104ms (ActiveRecord: 0.3ms)
+  [1m[35m (2.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:13:55', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$6.QtiFnZXEY/NnwdgqdFVukMd6xrd6pECiksh9GbIN9B8OzzeXSTC', '2014-08-28 04:13:55')
+  [1m[36mSQL (13.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:13:55', 10, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:13:55')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:13:55', 10, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:13:55')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 85ms (ActiveRecord: 0.3ms)
+  [1m[36m (9.8ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:19:26', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$N36QCu9o0lJNtspt/LiDKe2n2LQxaU2gCXb6GFApOfEwUYpLcICZO', '2014-08-28 04:19:26')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:19:26', 11, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:19:26')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:19:26', 11, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:19:26')[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 129ms (ActiveRecord: 0.3ms)
+  [1m[35m (1.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:19:26', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$XufV73C21IlAtUaz73W6M.Uh37IrFcT/CDdJ6LfaIuUnsUPXm/jUu', '2014-08-28 04:19:26')
+  [1m[36mSQL (16.4ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:19:26', 12, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:19:26')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:19:26', 12, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:19:26')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 97ms (ActiveRecord: 0.2ms)
+  [1m[36m (11.5ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.1ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:20:50', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$5UcH2BfmaIvYZM2vR9WkD.7SEmvEOe5Oq5ZyM1n3hvjBaKL/10WoC', '2014-08-28 04:20:50')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:20:50', 13, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:20:50')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:20:50', 13, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:20:50')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 110ms (ActiveRecord: 0.3ms)
+  [1m[35m (1.6ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:20:50', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$ahsY9W.SLFtQbTUPxz4lVeLjRrANuuxPapiyNtf4l6l8wCSzj80nq', '2014-08-28 04:20:50')
+  [1m[36mSQL (12.8ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:20:50', 14, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:20:50')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:20:50', 14, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:20:50')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 81ms (ActiveRecord: 0.2ms)
+  [1m[36m (11.6ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:23:24', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$8mldw6Vx/2J4s/wuNvLiSOd8KFlqbaJwTrEIioc1M7ukF6UJhZ4yW', '2014-08-28 04:23:24')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:23:24', 15, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:23:24')
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:23:24', 15, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:23:24')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 108ms (ActiveRecord: 0.3ms)
+  [1m[35m (1.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:23:24', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$1/oWZzf5OT9vnjUaNGVhXukesLQXThYXN66aWSTiihqZUXeyQQUIy', '2014-08-28 04:23:24')
+  [1m[36mSQL (12.0ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:23:24', 16, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:23:24')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:23:24', 16, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:23:24')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 80ms (ActiveRecord: 0.4ms)
+  [1m[36m (12.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.4ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:24:25', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$tXV0RGLisoZwmONEOYYFsOBvyrt7b4..GLHQyji3xMFwlznGtW3Da', '2014-08-28 04:24:25')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:24:25', 17, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:24:25')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:24:25', 17, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:24:25')[0m
+  [1m[35m (0.6ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.0ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 119ms (ActiveRecord: 0.0ms)
+  [1m[35m (11.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:24:25', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$rGuLNNmoQMRut8BQ1.2N4.80gCFhZK6ppG63ngTzGKqFdcKbQmBAC', '2014-08-28 04:24:25')
+  [1m[36mSQL (9.3ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:24:25', 18, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:24:25')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:24:25', 18, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:24:25')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 101ms (ActiveRecord: 0.3ms)
+  [1m[36m (11.3ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.4ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:24:35', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$9hRP8EStdDuQD/nWCk1Ii.Xp5aqk8K/5ALquI23BzkmXkPAKgCfaq', '2014-08-28 04:24:35')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:24:35', 19, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:24:35')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:24:35', 19, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:24:35')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 120ms (ActiveRecord: 0.3ms)
+  [1m[35m (11.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:24:35', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$sDVjsUihq/a2tdSwlF7XSuSQSqbWjmdlyIPL04OoVKlNWBjxB0KOC', '2014-08-28 04:24:35')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:24:35', 20, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:24:35')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:24:35', 20, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:24:35')
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 79ms (ActiveRecord: 0.2ms)
+  [1m[36m (8.6ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:24:53', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$WUK3XLShVeBJu9IYg5qT4ulG6au7z/0gt8MXiqbMfOri.MWZjOA92', '2014-08-28 04:24:53')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:24:53', 21, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:24:53')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:24:53', 21, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:24:53')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 121ms (ActiveRecord: 0.3ms)
+  [1m[35m (10.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:24:53', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$7SzaFP2rQi/WrgmQUydkG.3QtQ5a0iJhhD5O8RlNXVAkvR/Eoai/.', '2014-08-28 04:24:53')
+  [1m[36mSQL (9.5ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:24:53', 22, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:24:53')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:24:53', 22, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:24:53')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 95ms (ActiveRecord: 0.2ms)
+  [1m[36m (10.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCustomer Exists (0.3ms)[0m  SELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member1@example.jp' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:28:07', 'member1@example.jp', 'member1@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$6b3foXBPVg.ihEHY.xIy.e0V9UVqqgDdcMLESZSC3eVYJ8xFNcL0u', '2014-08-28 04:28:07')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:28:07', 23, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:28:07')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:28:07', 23, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:28:07')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member1@example.jp", "password"=>"[FILTERED]"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member1@example.jp' LIMIT 1[0m
+Redirected to http://example.com/mypage
+Completed 302 Found in 118ms (ActiveRecord: 0.3ms)
+  [1m[35m (10.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCustomer Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM `customers`  WHERE `customers`.`email_for_index` = BINARY 'member2@example.jp' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `customers` (`birth_mday`, `birth_month`, `birth_year`, `birthday`, `created_at`, `email`, `email_for_index`, `family_name`, `family_name_kana`, `gender`, `given_name`, `given_name_kana`, `hashed_password`, `updated_at`) VALUES (1, 1, 1970, '1970-01-01', '2014-08-28 04:28:07', 'member2@example.jp', 'member2@example.jp', '山田', 'ヤマダ', 'male', '太郎', 'タロウ', '$2a$10$fwPjDmyW5iFqgsHlTpSppO8PUntb47beXjfsWty/YZn35uIr9IfAW', '2014-08-28 04:28:07')
+  [1m[36mSQL (10.7ms)[0m  [1mINSERT INTO `addresses` (`address1`, `address2`, `city`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '千代田区', '2014-08-28 04:28:07', 24, '1000001', '東京都', 'HomeAddress', '2014-08-28 04:28:07')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `division_name`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('試験1-1-1', '', '港区', 'テスト', '2014-08-28 04:28:07', 24, '開発部', '1050000', '東京都', 'WorkAddress', '2014-08-28 04:28:07')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Customer::SessionsController#create as HTML
+  Parameters: {"customer_login_form"=>{"email"=>"member2@example.jp", "password"=>"[FILTERED]", "remember_me"=>"1"}}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers`  WHERE `customers`.`email_for_index` = 'member2@example.jp' LIMIT 1
+Redirected to http://example.com/mypage
+Completed 302 Found in 96ms (ActiveRecord: 0.3ms)
+  [1m[36m (11.1ms)[0m  [1mROLLBACK[0m
