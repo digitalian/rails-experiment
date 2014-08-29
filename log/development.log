@@ -15174,3 +15174,47 @@ Mysql2::Error: Unknown column 'id.namespace' in 'where clause': DELETE FROM `all
   [1m[35mSQL (0.3ms)[0m  INSERT INTO `addresses` (`address1`, `address2`, `city`, `company_name`, `created_at`, `customer_id`, `postal_code`, `prefecture`, `type`, `updated_at`) VALUES ('開発4-5-6', 'ルビービルディング2F', '黄巻市', 'OIAX', '2014-08-29 00:38:29', 100, '0100194', '兵庫県', 'WorkAddress', '2014-08-29 00:38:29')
   [1m[36m (9.1ms)[0m  [1mCOMMIT[0m
   [1m[35mWorkAddress Load (0.3ms)[0m  SELECT  `addresses`.* FROM `addresses`  WHERE `addresses`.`type` IN ('WorkAddress') AND `addresses`.`customer_id` = 100 LIMIT 1
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 00:44:13 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.4ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 779ms (Views: 777.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 00:44:14 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 713ms (Views: 710.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2014-08-29 00:44:23 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.4ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 701ms (Views: 698.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2014-08-29 00:44:30 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 805ms (Views: 801.8ms | ActiveRecord: 0.3ms)
