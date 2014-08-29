@@ -21342,3 +21342,309 @@ Processing by Staff::ProgramsController#show as HTML
   Rendered staff/shared/_header.html.erb (0.8ms)
   Rendered shared/_footer.html.erb (0.1ms)
 Completed 200 OK in 368ms (Views: 358.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/admin" for 10.0.2.2 at 2014-08-29 06:30:23 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Admin::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered admin/top/index.html.erb within layouts/admin (4.4ms)
+  Rendered admin/shared/_header.html.erb (1.2ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 719ms (Views: 664.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 10.0.2.2 at 2014-08-29 06:30:30 +0000
+Processing by Admin::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered admin/sessions/new.html.erb within layouts/admin (32.6ms)
+  Rendered admin/shared/_header.html.erb (1.0ms)
+  Rendered shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 292ms (Views: 273.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/session" for 10.0.2.2 at 2014-08-29 06:30:40 +0000
+Processing by Admin::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NRyP1O//FBeWz4SdpNR4h9753wCSiKlRlSNrI8dq4GA=", "admin_login_form"=>{"email"=>"shoichi.shimizu@me.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[35mAdminMember Load (0.3ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`email_for_index` = 'shoichi.shimizu@me.com' LIMIT 1
+Redirected to http://baukis.example.com:4000/admin
+Completed 302 Found in 217ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/admin" for 10.0.2.2 at 2014-08-29 06:30:40 +0000
+Processing by Admin::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+  Rendered admin/top/dashboard.html.erb within layouts/admin (1.4ms)
+  Rendered admin/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 218ms (Views: 215.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/allowed_sources" for 10.0.2.2 at 2014-08-29 06:30:45 +0000
+Processing by Admin::AllowedSourcesController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAdminMember Load (0.5ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1
+  Rendered admin/allowed_sources/_new_allowed_source.html.erb (11.5ms)
+  [1m[36mAllowedSource Load (0.3ms)[0m  [1mSELECT `allowed_sources`.* FROM `allowed_sources`   ORDER BY `allowed_sources`.`octet1` ASC, `allowed_sources`.`octet2` ASC, `allowed_sources`.`octet3` ASC, `allowed_sources`.`octet4` ASC[0m
+  Rendered admin/allowed_sources/index.html.erb within layouts/admin (103.2ms)
+  Rendered admin/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 383ms (Views: 344.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/admin/allowed_sources" for 10.0.2.2 at 2014-08-29 06:30:57 +0000
+Processing by Admin::AllowedSourcesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NRyP1O//FBeWz4SdpNR4h9753wCSiKlRlSNrI8dq4GA=", "allowed_source"=>{"octet1"=>"127", "octet2"=>"0", "octet3"=>"0", "last_octet"=>"1"}, "commit"=>"追加", "host"=>"baukis.example.com"}
+  [1m[35mAdminMember Load (0.4ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mAllowedSource Exists (0.4ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE (`allowed_sources`.`octet4` = BINARY 1 AND `allowed_sources`.`octet1` = 127 AND `allowed_sources`.`octet2` = 0 AND `allowed_sources`.`octet3` = 0) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `allowed_sources` (`created_at`, `namespace`, `octet1`, `octet2`, `octet3`, `octet4`, `updated_at`) VALUES ('2014-08-29 06:30:57', 'staff', 127, 0, 0, 1, '2014-08-29 06:30:57')[0m
+  [1m[35m (16.5ms)[0m  COMMIT
+Redirected to http://baukis.example.com:4000/admin/allowed_sources
+Completed 302 Found in 72ms (ActiveRecord: 18.4ms)
+
+
+Started GET "/admin/allowed_sources" for 10.0.2.2 at 2014-08-29 06:30:57 +0000
+Processing by Admin::AllowedSourcesController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+  Rendered admin/allowed_sources/_new_allowed_source.html.erb (2.4ms)
+  [1m[35mAllowedSource Load (0.3ms)[0m  SELECT `allowed_sources`.* FROM `allowed_sources`   ORDER BY `allowed_sources`.`octet1` ASC, `allowed_sources`.`octet2` ASC, `allowed_sources`.`octet3` ASC, `allowed_sources`.`octet4` ASC
+  Rendered admin/allowed_sources/index.html.erb within layouts/admin (26.6ms)
+  Rendered admin/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 242ms (Views: 238.4ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/admin/session" for 10.0.2.2 at 2014-08-29 06:31:59 +0000
+Processing by Admin::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NRyP1O//FBeWz4SdpNR4h9753wCSiKlRlSNrI8dq4GA=", "host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+Redirected to http://baukis.example.com:4000/admin
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 10.0.2.2 at 2014-08-29 06:32:00 +0000
+Processing by Admin::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered admin/top/index.html.erb within layouts/admin (0.1ms)
+  Rendered admin/shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 199ms (Views: 197.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2014-08-29 06:32:04 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.3ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  [1m[36mStaffMember Load (0.3ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 1 LIMIT 1[0m
+  Rendered staff/top/dashboard.html.erb within layouts/staff (1.1ms)
+  Rendered staff/shared/_header.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 688ms (Views: 596.9ms | ActiveRecord: 3.5ms)
+
+
+Started DELETE "/session" for 10.0.2.2 at 2014-08-29 06:32:16 +0000
+Processing by Staff::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NRyP1O//FBeWz4SdpNR4h9753wCSiKlRlSNrI8dq4GA=", "host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.5ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  [1m[36mStaffMember Load (0.2ms)[0m  [1mSELECT  `staff_members`.* FROM `staff_members`  WHERE `staff_members`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `staff_events` (`created_at`, `staff_member_id`, `type`) VALUES ('2014-08-29 06:32:16', 1, 'logged_out')[0m
+  [1m[35m (2.8ms)[0m  COMMIT
+Redirected to http://baukis.example.com:4000/
+Completed 302 Found in 83ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2014-08-29 06:32:16 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered staff/top/index.html.erb within layouts/staff (0.4ms)
+  Rendered staff/shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 347ms (Views: 343.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:32:33 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.7ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered staff/sessions/new.html.erb within layouts/staff (1.9ms)
+  Rendered staff/shared/_header.html.erb (1.2ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 401ms (Views: 383.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admin" for 10.0.2.2 at 2014-08-29 06:35:52 +0000
+Processing by Admin::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered admin/top/index.html.erb within layouts/admin (0.1ms)
+  Rendered admin/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 217ms (Views: 216.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 10.0.2.2 at 2014-08-29 06:35:57 +0000
+Processing by Admin::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  Rendered admin/sessions/new.html.erb within layouts/admin (1.0ms)
+  Rendered admin/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 208ms (Views: 207.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/session" for 10.0.2.2 at 2014-08-29 06:36:03 +0000
+Processing by Admin::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NRyP1O//FBeWz4SdpNR4h9753wCSiKlRlSNrI8dq4GA=", "admin_login_form"=>{"email"=>"shoichi.shimizu@me.com", "password"=>"[FILTERED]"}, "commit"=>"ログイン", "host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.5ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`email_for_index` = 'shoichi.shimizu@me.com' LIMIT 1[0m
+Redirected to http://baukis.example.com:4000/admin
+Completed 302 Found in 77ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/admin" for 10.0.2.2 at 2014-08-29 06:36:03 +0000
+Processing by Admin::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAdminMember Load (1.0ms)[0m  SELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1
+  Rendered admin/top/dashboard.html.erb within layouts/admin (0.7ms)
+  Rendered admin/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 195ms (Views: 191.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/allowed_sources" for 10.0.2.2 at 2014-08-29 06:36:08 +0000
+Processing by Admin::AllowedSourcesController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+  Rendered admin/allowed_sources/_new_allowed_source.html.erb (1.4ms)
+  [1m[35mAllowedSource Load (0.4ms)[0m  SELECT `allowed_sources`.* FROM `allowed_sources`   ORDER BY `allowed_sources`.`octet1` ASC, `allowed_sources`.`octet2` ASC, `allowed_sources`.`octet3` ASC, `allowed_sources`.`octet4` ASC
+  Rendered admin/allowed_sources/index.html.erb within layouts/admin (41.6ms)
+  Rendered admin/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 260ms (Views: 256.7ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/admin/allowed_sources/delete" for 10.0.2.2 at 2014-08-29 06:36:11 +0000
+Processing by Admin::AllowedSourcesController#delete as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NRyP1O//FBeWz4SdpNR4h9753wCSiKlRlSNrI8dq4GA=", "form"=>{"allowed_sources"=>{"0"=>{"id"=>"1", "_destroy"=>"1"}, "1"=>{"id"=>"2", "_destroy"=>"1"}}}, "commit"=>"チェックしたIPアドレスを削除", "host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.3ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM `allowed_sources` WHERE `allowed_sources`.`namespace` = 'staff' AND `allowed_sources`.`id` IN (1, 2)
+Redirected to http://baukis.example.com:4000/admin/allowed_sources
+Completed 302 Found in 26ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/admin/allowed_sources" for 10.0.2.2 at 2014-08-29 06:36:11 +0000
+Processing by Admin::AllowedSourcesController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAdminMember Load (0.4ms)[0m  [1mSELECT  `admin_members`.* FROM `admin_members`  WHERE `admin_members`.`id` = 1 LIMIT 1[0m
+  Rendered admin/allowed_sources/_new_allowed_source.html.erb (1.3ms)
+  [1m[35mAllowedSource Load (0.3ms)[0m  SELECT `allowed_sources`.* FROM `allowed_sources`   ORDER BY `allowed_sources`.`octet1` ASC, `allowed_sources`.`octet2` ASC, `allowed_sources`.`octet3` ASC, `allowed_sources`.`octet4` ASC
+  Rendered admin/allowed_sources/index.html.erb within layouts/admin (19.7ms)
+  Rendered admin/shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 213ms (Views: 209.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 10.0.2.2 at 2014-08-29 06:36:19 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered errors/forbidden.html.erb within layouts/staff (1.3ms)
+  Rendered staff/shared/_header.html.erb (1.4ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 403 Forbidden in 717ms (Views: 714.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:36:26 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.3ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 696ms (Views: 693.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:36:27 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 681ms (Views: 679.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2014-08-29 06:36:32 +0000
+Processing by Staff::TopController#index as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.5ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 687ms (Views: 684.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:38:21 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.3ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (5.1ms)
+  Rendered staff/shared/_header.html.erb (6.5ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 403 Forbidden in 1440ms (Views: 1349.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:38:23 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 682ms (Views: 679.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:53:53 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.3ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (1.5ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 403 Forbidden in 761ms (Views: 734.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:53:54 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[36mAllowedSource Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1[0m
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 403 Forbidden in 735ms (Views: 732.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 10.0.2.2 at 2014-08-29 06:53:55 +0000
+Processing by Staff::SessionsController#new as HTML
+  Parameters: {"host"=>"baukis.example.com"}
+  [1m[35mAllowedSource Exists (0.9ms)[0m  SELECT  1 AS one FROM `allowed_sources`  WHERE `allowed_sources`.`namespace` = 'staff' AND (octet1 = '10' AND octet2 = '0' AND octet3 = '2'
+      AND ((octet4 = '2' AND wildcard = 0) OR wildcard = 1)) LIMIT 1
+  Rendered errors/forbidden.html.erb within layouts/staff (0.1ms)
+  Rendered staff/shared/_header.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 403 Forbidden in 1179ms (Views: 1176.8ms | ActiveRecord: 0.9ms)
