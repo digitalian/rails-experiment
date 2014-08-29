@@ -23,7 +23,7 @@ Vagrant上で実行する場合は、下記通りとなります。
 
 1.Vagrant
 
-```
+```sh
     vagrant up
     vagrant ssh
 ```
@@ -32,19 +32,25 @@ Vagrant上で実行する場合は、下記通りとなります。
   
 2.Bundle
 
+```sh
     cd /vagrant/
     bin/bundle
+```
   
 3.DBセットアップ
 
+```bin/sh
     bin/rake db:create
     bin/rake db:migrate
     bin/rake db:reset
-　
+```
+
 4.VirtualHostの修正
 
+```bin/sh
     config/route.rb
-  
+```
+
   を任意のドメインに修正（ex.localhostなど）
 
 ***
@@ -55,11 +61,15 @@ Vagrant上で実行する場合は、下記通りとなります。
  
  ちな、herokuへアップ時は、developmentと同環境にて、下記コマンドでprecompileが必要でした。
 
+```bin/sh
     bin/rake assets:clean assets:precompile RAILS_ENV=production
+```
 
  ログインに使用するテストデータは、下記フォルダを参照のこと。
 
+```bin/sh
     db/seeds/
+```
 
  .ruby-versionの中身は、rvmを考慮し「ruby-2.1.2」を使用してます（「2.1.2」ではなく。)
  
