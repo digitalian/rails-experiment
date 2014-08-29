@@ -3,6 +3,8 @@ rails-experiment
 
 **OIAX App**
 
+[toc]
+
 ##デモサイトURL @ heroku
 
   職員
@@ -21,8 +23,10 @@ Vagrant上で実行する場合は、下記通りとなります。
 
 1.Vagrant
 
+```
     vagrant up
     vagrant ssh
+```
 
   を実行
   
