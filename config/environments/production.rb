@@ -84,6 +84,7 @@ Rails.application.configure do
   config.baukis = {
    staff: { host: 'rails-experiment.herokuapp.com', path: 'staff' },
    admin: { host: 'rails-experiment.herokuapp.com', path: 'admin' },
-   customer: { host: 'rails-experiment.herokuapp.com', path: 'mypage' }
+   customer: { host: 'rails-experiment.herokuapp.com', path: 'mypage' },
+   restrict_ip_addresses: true
   }
 end
