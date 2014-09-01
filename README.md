@@ -71,6 +71,14 @@ Vagrant上で実行する場合は、下記通りとなります。
     db/seeds/
 ```
 
+ herokuのDBリセットは下記コマンドで。
+ 
+ ```bin/sh
+    heroku pg:reset DATABASE
+    heroku run rake db:migrate
+    heroku run rake db:seed
+ ```
+
  .ruby-versionの中身は、rvmを考慮し「ruby-2.1.2」を使用してます（「2.1.2」ではなく。)
  
  IPアドレス制限機能を実装しました、管理者でログイン後、任意のIPアドレスを追加してください。
