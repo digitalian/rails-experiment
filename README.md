@@ -3,8 +3,6 @@ rails-experiment
 
 **OIAX App**
 
-[toc]
-
 ##デモサイトURL @ heroku
 
   職員
