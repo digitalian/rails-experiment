@@ -7,13 +7,13 @@ rails-experiment
 ##デモサイトURL @ heroku
 
   職員
-  >[http://rails-experiment.herokuapp.com/staff](http://rails-experiment.herokuapp.com/staff "_blank"){:target="_blank"}
+  >[http://rails-experiment.herokuapp.com/staff](http://rails-experiment.herokuapp.com/staff){:target="_blank"}
   
   管理者
-  >[http://rails-experiment.herokuapp.com/admin](http://rails-experiment.herokuapp.com/admin "_blank"){:target="_blank"}
+  >[http://rails-experiment.herokuapp.com/admin](http://rails-experiment.herokuapp.com/admin){:target="_blank"}
   
   顧客
-  >[http://rails-experiment.herokuapp.com/mypage](http://rails-experiment.herokuapp.com/mypage "_blank"){:target="_blank"}
+  ><a href="http://rails-experiment.herokuapp.com/mypage" target="_blank">http://rails-experiment.herokuapp.com/mypage</a>
 
 ***
 
