@@ -1,26 +1,20 @@
 rails-experiment
 ================
 
-&lt;script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"&gt;&lt;/script&gt;
-        &lt;script type="text/javascript"&gt;
-        $(function () {
-            $("a[href^='http']:not([href*='" + location.hostname + "'])").attr('target', '_blank');
-        });
-        &lt;/script&gt;
-        
 **OIAX App**
 
+[toc]
 
 ##デモサイトURL @ heroku
 
   職員
-  >[http://rails-experiment.herokuapp.com/staff](http://rails-experiment.herokuapp.com/staff){:target="_blank"}
+  >http://rails-experiment.herokuapp.com/staff
   
   管理者
-  >[http://rails-experiment.herokuapp.com/admin](http://rails-experiment.herokuapp.com/admin){:target="_blank"}
+  >http://rails-experiment.herokuapp.com/admin
   
   顧客
-  ><a href="http://rails-experiment.herokuapp.com/mypage" target="_blank">http://rails-experiment.herokuapp.com/mypage</a>
+  >http://rails-experiment.herokuapp.com/mypage
 
 ***
 
