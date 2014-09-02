@@ -27,6 +27,7 @@ module Baukis
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.paths << "#{Rails}/vender/assets/fonts"
+    config.app_generators.stylesheet_engine :less
     config.time_zone = 'Tokyo'
     config.i18n.load_path += 
       Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
