@@ -25,8 +25,6 @@ gem 'barby', '~> 0.6.1'
 gem 'thinreports-rails'
 gem 'rqrcode'
 gem 'chunky_png'
-gem "twitter-bootstrap-rails"
-gem 'less-rails'
 gem 'rails_12factor', group: :production
 group :development do
   gem 'spring'

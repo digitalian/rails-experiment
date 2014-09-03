@@ -2,5 +2,4 @@
  *= require jquery.ui.datepicker
  *= require_tree ./shared
  *= require_tree ./customer
- *= require bootstrap
  */
