@@ -25,6 +25,8 @@ gem 'barby', '~> 0.6.1'
 gem 'thinreports-rails'
 gem 'rqrcode'
 gem 'chunky_png'
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 group :development do
   gem 'spring'

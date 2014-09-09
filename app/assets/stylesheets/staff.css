@@ -1,5 +1,6 @@
 /*
  *= require jquery.ui.datepicker
+ *= require shared/bootstrap_and_overrides
  *= require_tree ./shared
  *= require_tree ./staff
  */
