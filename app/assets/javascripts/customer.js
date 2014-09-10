@@ -6,6 +6,3 @@
 //= require twitter/bootstrap
 //= require_tree ./shared
 //= require_tree ./customer
-jQuery ->
-$("a[rel~=popover], .has-popover").popover()
-$("a[rel~=tooltip], .has-tooltip").tooltip()
