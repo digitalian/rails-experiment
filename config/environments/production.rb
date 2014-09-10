@@ -87,4 +87,6 @@ Rails.application.configure do
    customer: { host: 'rails-experiment.herokuapp.com', path: 'mypage' },
    restrict_ip_addresses: true
   }
+
+  config.less.compress = true
 end

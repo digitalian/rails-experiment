@@ -37,5 +37,6 @@ module Baukis
       g.controller_specs false
       g.view_specs false
     end
+    config.app_generators.stylesheet_engine :less
   end
 end
