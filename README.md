@@ -86,6 +86,9 @@ Vagrant上で実行する場合は、下記通りとなります。
  
  bootstrap風のスタイルにしましたw ちゃんと適用するのはそのうち気が向いたらにしま...
  
+ twitter-bootstrapをgemでインストールする際は、public/assetsを削除する必要があった。
+ (assets:cleanできえないことが判明。)
+ 
 ###今後の予定
 
  ・問い合わせ機能（掲示板）
