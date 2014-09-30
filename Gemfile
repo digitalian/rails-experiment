@@ -29,6 +29,7 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 group :development do
+  gem "rails-erd"
   gem 'spring'
   gem 'quiet_assets', '~>1.0.2'
 end
